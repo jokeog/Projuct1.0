@@ -22,13 +22,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="วันแรกของรอบเดือน"
-                android:id="@+id/button" />
+                android:id="@+id/msButtonS" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="วันสุดท้ายของรอบเดือน"
-                android:id="@+id/button2"
+                android:id="@+id/msButtonE"
                 android:layout_column="5" />
 
         </TableRow>
