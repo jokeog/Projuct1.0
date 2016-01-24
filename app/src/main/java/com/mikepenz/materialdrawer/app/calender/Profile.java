@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -46,6 +47,30 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 public class Profile extends AppCompatActivity {
+
+    private String name;
+    private double weight;
+    private double height;
+    private double bmi;
+
+    private EditText temp;
+
+    public void setBmi()
+    {
+        temp  = (EditText)findViewById(R.id.editMessage);
+        bmi = Double.parseDouble(temp.getText().toString());
+    }
+
+    public void setWeight()
+    {
+        temp  = (EditText)findViewById(R.id.editW);
+        weight = Double.parseDouble(temp.getText().toString());
+    }
+    public void setHeight()
+    {
+        temp  = (EditText)findViewById(R.id.editH);
+        height = Double.parseDouble(temp.getText().toString());
+    }
 
     private Drawer result = null;
 
@@ -140,4 +165,41 @@ public class Profile extends AppCompatActivity {
         );
         dialog.show();
     }
+
+
+    @OnClick (R.id.radioButton)
+    void onClickBmi ()
+    {
+        this.setHeight();
+        this.setWeight();
+
+        double result = weight / ((height/100)*(height/100));
+        String bmi;
+        result = Math.floor(result * 100) / 100;
+
+        if(result <= 18.50)
+        {
+            bmi ="น้ำหนักน้อย / ผอม";
+        }
+        else if (result >18.50 && result<= 22.90)
+        {
+            bmi ="ปกติ (สุขภาพดี)";
+        }
+        else if (result >23 && result<=24.90 )
+        {
+            bmi ="ท้วม / โรคอ้วนระดับ 1";
+        }
+        else if (result >25 && result<=29.90 )
+        {
+            bmi ="อ้วน / โรคอ้วนระดับ 2";
+        }
+        else
+        {
+            bmi ="อ้วนมาก / โรคอ้วนระดับ 3";
+        }
+
+        EditText editText = (EditText)findViewById(R.id.editMessage);
+        editText.setText(String.valueOf(result)+" "+bmi, TextView.BufferType.EDITABLE);
+    }
+
 }
