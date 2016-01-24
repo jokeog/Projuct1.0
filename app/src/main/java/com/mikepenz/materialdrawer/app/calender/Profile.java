@@ -65,11 +65,7 @@ public class Profile extends AppCompatActivity {
                 R.id.editEmail ,R.id.editH ,R.id.editW ,R.id.editMessage ,R.id.pfButtonDate  ,R.id.textKg ,R.id.textCm};
 
         CalendarFont font =new CalendarFont() ;
-
         font.setFonts(value ,this) ;
-
-
-
         // Handle Toolbar
         result = new DrawerBuilder()
                 .withActivity(this)
